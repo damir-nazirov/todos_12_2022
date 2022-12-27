@@ -1,17 +1,7 @@
 import styled from 'styled-components';
-import { store } from '../../app/store';
 import { connect } from 'react-redux'
 import { changeText, addTodoItem } from '../../actions';
 import { useState } from 'react';
-
-// import { addTodoItem } from '../../actions';
-
-const {getState} = store;
-const inputValue = getState().inputValue
-
-
-
-console.log(inputValue);
 
 const TodoInputStl = styled.input`
   border-color: ${({empty}) => empty ? 'red' : 'black'};
@@ -19,24 +9,18 @@ const TodoInputStl = styled.input`
   height: 25px;
   border-top-left-radius: 4px;
   border-bottom-left-radius: 4px;
-  /* border: 1px black solid; */
-  /* border: 1px solid; */
 `;
 
 export const DFlexJCCenterStl = styled.div`
   display: flex;
   justify-content: center;
 `
-
 const FormStl = styled.form`
   width: 30%;
   display: flex;
   justify-content: center;
 `
-
 export const TodoAddButton = styled.button`
-  // width: 25px;
-  // height: 25px;
   border-top-right-radius: 4px;
   border-bottom-right-radius: 4px;
   border: 1px black solid;
@@ -44,19 +28,14 @@ export const TodoAddButton = styled.button`
   cursor: pointer;
   background-color: rgba(127, 181, 234, 0.5);
 `
-
-
 const TodoInput = ({inputValue}) => {
   const [empty, setEmpty] = useState(true)
-
-
 
   const setInputValue = (e) => {
     const {value} = e.target
     if(empty && value) setEmpty(false)
     changeText(value)
   }
-
 
   const submit = (e) => {
     e.preventDefault(); 
@@ -74,7 +53,6 @@ const TodoInput = ({inputValue}) => {
           onSubmit={submit}
           >
       <TodoInputStl
-            // required="required"
             placeholder='What needs to be done?'
             autoFocus={true}
             value={inputValue}
@@ -88,8 +66,6 @@ const TodoInput = ({inputValue}) => {
             </TodoAddButton>
     </FormStl>
     </DFlexJCCenterStl>
-
-   
   )
 }
 
@@ -97,10 +73,7 @@ const mapStateToProps = (state) => ({
     inputValue: state.inputValue
 })
 
-
-
 const mapDispatchToProps = {changeText, addTodoItem}
-
 export default connect(mapStateToProps, mapDispatchToProps)(TodoInput);
 
 
