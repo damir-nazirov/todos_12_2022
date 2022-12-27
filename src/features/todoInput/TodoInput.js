@@ -33,15 +33,15 @@ const TodoInput = ({inputValue}) => {
 
   const setInputValue = (e) => {
     const {value} = e.target
-    if(empty && value) setEmpty(false)
+    if(empty && value) {
+      setEmpty(false)}
     changeText(value)
   }
 
   const submit = (e) => {
     e.preventDefault(); 
     if (inputValue.length > 0){
-      
-      setEmpty(false)
+      // setEmpty(false) // Данила, кажется, эта строка нам не нужна. Так?
       addTodoItem()
     }
     else {setEmpty(true)}

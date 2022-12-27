@@ -5,8 +5,6 @@ import { store } from "../app/store"
 export const addTodoItem = () => store.dispatch({
   type: 'ADD_TODO',
   id: nanoid(),
-
-
 })
 
 export const toggleDoneTodo = (id) => store.dispatch({
